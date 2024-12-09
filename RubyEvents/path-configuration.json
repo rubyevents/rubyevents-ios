@@ -1,0 +1,15 @@
+{
+  "settings": {
+    
+  },
+  "rules": [
+    {
+      "patterns": [
+        "/player$"
+      ],
+      "properties": {
+        "view_controller": "player"
+      }
+    }
+  ]
+}
