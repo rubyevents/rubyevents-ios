@@ -139,7 +139,7 @@ class TabBarController: UITabBarController {
 
     UINavigationBar.appearance().standardAppearance = navigationBarAppearance
     UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-    UINavigationBar.appearance().isOpaque = true
+    UINavigationBar.appearance().isOpaque = false
     UINavigationBar.appearance().isTranslucent = true
 
     navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]

@@ -13,16 +13,16 @@ struct EventCarousel: View {
   let events: [Event]
   let navigator: Navigator?
   let viewAllURL: URL?
-
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       HStack {
         Text(title)
           .font(.headline)
           .bold()
-
+        
         Spacer()
-
+        
         Button(action: { if viewAllURL != nil { navigator?.route(viewAllURL!) } }) {
           Text("View All")
             .font(.subheadline)
@@ -30,7 +30,7 @@ struct EventCarousel: View {
         }
       }
       .padding(.horizontal, 16)
-
+      
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(spacing: 16) {
           ForEach(events) { event in

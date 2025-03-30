@@ -9,18 +9,18 @@ import SwiftUI
 import HotwireNative
 
 struct NoAnimationButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 1 : 1) // No scaling
-            .animation(nil, value: configuration.isPressed) // Disable animation
-    }
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .scaleEffect(configuration.isPressed ? 1 : 1) // No scaling
+      .animation(nil, value: configuration.isPressed) // Disable animation
+  }
 }
 
 
 struct FeaturedCarousel: View {
   var events: [Event]
   var navigator: Navigator?
-
+  
   var body: some View {
     TabView {
       ForEach(events) { event in

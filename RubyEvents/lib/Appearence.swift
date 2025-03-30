@@ -8,11 +8,11 @@ struct Appearance {
   private static func configureNavigationBar() {
     let navigationBarAppearance = UINavigationBarAppearance()
     navigationBarAppearance.configureWithDefaultBackground()
-    navigationBarAppearance.backgroundColor = .white
+    navigationBarAppearance.backgroundColor = .clear
 
     UINavigationBar.appearance().standardAppearance = navigationBarAppearance
     UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-    UINavigationBar.appearance().isOpaque = true
+    UINavigationBar.appearance().isOpaque = false
     UINavigationBar.appearance().isTranslucent = false
     UINavigationBar.appearance().tintColor = .black
 

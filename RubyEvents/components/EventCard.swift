@@ -11,7 +11,7 @@ import HotwireNative
 struct EventCard: View {
   let event: Event
   var navigator: Navigator?
-
+  
   var body: some View {
     Button(action: {
       if (event.url != nil) {
@@ -31,18 +31,18 @@ struct EventCard: View {
                 .frame(maxWidth: .infinity, maxHeight: 160)
                 .foregroundColor(Color(hex: "#EFEFEF"))
             }
-
-          .frame(width: 200, height: 120)
-          .border(.gray, width: 1)
-          .clipShape(RoundedRectangle(cornerRadius: 12))
-          .overlay(
-            RoundedRectangle(cornerRadius: 13)
-              .stroke(Color(hex: "#EFEFEF"), lineWidth: 1)
+            
+            .frame(width: 200, height: 120)
+            .border(.gray, width: 1)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .overlay(
+              RoundedRectangle(cornerRadius: 13)
+                .stroke(Color(hex: "#EFEFEF"), lineWidth: 1)
             )
           } else {
             Text("No Image")
           }
-
+          
           Text(event.location)
             .font(.caption2)
             .bold()
@@ -53,7 +53,7 @@ struct EventCard: View {
             .cornerRadius(4)
             .padding(8)
         }
-
+        
         VStack(alignment: .leading, spacing: 4) {
           Text(event.name)
             .font(.caption)
@@ -61,7 +61,7 @@ struct EventCard: View {
             .truncationMode(.tail)
             .fontWeight(.medium)
             .foregroundStyle(.black)
-
+          
           Text(event.dateString())
             .font(.caption2)
             .foregroundColor(.gray)
