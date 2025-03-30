@@ -36,7 +36,7 @@ struct InitialsAvatar: View {
       let height = geometry.size.height
 
       ZStack {
-        Circle().fill(.accent)
+        Circle().fill(.brandRed)
 
         Text(initials)
           .foregroundColor(.white)
