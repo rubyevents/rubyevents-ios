@@ -1,10 +1,34 @@
+//
+//  AppDelegate.swift
+//  RubyEvents
+//
+//  Created by Marco Roth on 06.01.2025.
+//
+
+import HotwireNative
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+
+    let versionNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+    let uniqueDeviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
+
+    Hotwire.config.applicationUserAgentPrefix = "Hotwire Native iOS; app_version: \(versionNumber); unique_device_id: \(uniqueDeviceId);"
+
+    Hotwire.registerBridgeComponents([
+      ButtonComponent.self
+    ])
+
+    Hotwire.config.showDoneButtonOnModals = true
+    Hotwire.config.debugLoggingEnabled = true
+
+    Hotwire.loadPathConfiguration(from: [
+      .server(Router.instance.path_configuration_url()),
+      .file(Bundle.main.url(forResource: "path-configuration", withExtension: "json")!)
+    ])
+
     return true
   }
 

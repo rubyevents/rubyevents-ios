@@ -4,8 +4,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    guard let _ = (scene as? UIWindowScene) else { return }
-
-    HotwireNavigator.instance.didStart(url: connectionOptions.urlContexts.first?.url, window: window)
+    App.instance.start(sceneDelegate: self)
   }
 }

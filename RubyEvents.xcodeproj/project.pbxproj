@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		973DD3652D95F8BE008E0AED /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 973DD3642D95F8BE008E0AED /* CachedAsyncImage */; };
 		97613B4C2D0635C600220031 /* HotwireNative in Frameworks */ = {isa = PBXBuildFile; productRef = 97613B4B2D0635C600220031 /* HotwireNative */; };
 		97613B572D06512900220031 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 97613B562D06512900220031 /* YouTubePlayerKit */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97613B572D06512900220031 /* YouTubePlayerKit in Frameworks */,
+				973DD3652D95F8BE008E0AED /* CachedAsyncImage in Frameworks */,
 				97613B4C2D0635C600220031 /* HotwireNative in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				97613B4B2D0635C600220031 /* HotwireNative */,
 				97613B562D06512900220031 /* YouTubePlayerKit */,
+				973DD3642D95F8BE008E0AED /* CachedAsyncImage */,
 			);
 			productName = RubyEvents;
 			productReference = 97613B162D0634F500220031 /* RubyEvents.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				97613B4A2D0635C600220031 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */,
 				97613B552D06512900220031 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+				973DD3632D95F8BE008E0AED /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 97613B172D0634F500220031 /* Products */;
@@ -356,6 +360,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		973DD3632D95F8BE008E0AED /* XCRemoteSwiftPackageReference "CachedAsyncImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bullinnyc/CachedAsyncImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
 		97613B4A2D0635C600220031 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hotwired/hotwire-native-ios";
@@ -375,6 +387,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		973DD3642D95F8BE008E0AED /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 973DD3632D95F8BE008E0AED /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
+			productName = CachedAsyncImage;
+		};
 		97613B4B2D0635C600220031 /* HotwireNative */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97613B4A2D0635C600220031 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */;

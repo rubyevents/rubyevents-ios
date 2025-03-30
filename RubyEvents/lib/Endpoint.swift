@@ -1,7 +1,7 @@
 import Foundation
 
 struct Endpoint {
-  static let development = URL(string: "http://192.168.1.244:3000")!
+  static let development = URL(string: "http://172.20.4.17:3000")!
   static let staging = URL(string: "https://staging.rubyvideo.dev")!
   static let production = URL(string: "https://rubyvideo.dev")!
 
