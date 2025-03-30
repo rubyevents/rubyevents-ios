@@ -82,16 +82,6 @@ class App {
   }
 }
 
-extension UIHostingController {
-  func hideNavigationBar(animated: Bool = true) {
-    navigationController?.setNavigationBarHidden(true, animated: animated)
-  }
-  
-  func showNavigationBar(animated: Bool = true) {
-    navigationController?.setNavigationBarHidden(false, animated: animated)
-  }
-}
-
 extension App: NavigatorDelegate {
   func handle(proposal: VisitProposal) -> ProposalResult {
     
@@ -102,8 +92,7 @@ extension App: NavigatorDelegate {
           navigator: App.instance.navigatorFor(title: "Home")
         )
       )
-      viewController.hideNavigationBar()
-      
+
       return .acceptCustom(viewController)
     default:
       return .accept
