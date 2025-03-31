@@ -81,14 +81,11 @@ struct HomeView: View {
       }
     }
     .onAppear {
-      navigator?.rootViewController.navigationBar.isHidden = true
-      
+      App.instance.tabBarController.hideNavigationBarFor(title: "Home")
       if !hasLoadedInitialData {
         fetchData()
         hasLoadedInitialData = true
       }
-    }.onDisappear {
-      navigator?.rootViewController.navigationBar.isHidden = false
     }
   }
   

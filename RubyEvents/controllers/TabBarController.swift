@@ -62,11 +62,25 @@ class TabBarController: UITabBarController {
 
     return navigators[index]
   }
-
-  var currentTab: String? {
+  
+  var currentNavigator: Navigator? {
+    navigatorFor(title: currentTabTitle ?? "")
+  }
+  
+  var currentTabTitle: String? {
     self.tabBar.selectedItem?.title
   }
-
+  
+  func hideNavigationBarFor(title: String) {
+    let navigator = self.navigatorFor(title: title)
+    navigator?.rootViewController.navigationBar.isHidden = true
+  }
+  
+  func showNavigationBarFor(title: String) {
+    let navigator = self.navigatorFor(title: title)
+    navigator?.rootViewController.navigationBar.isHidden = false
+  }
+  
   func hideTabBar() {
     self.tabBar.isHidden = true
   }
