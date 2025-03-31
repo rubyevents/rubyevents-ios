@@ -47,9 +47,9 @@ struct EventCarousel: View {
 }
 
 #Preview {
-  TalkCarousel(
+  EventCarousel(
     title: "Test",
-    talks: Talk.samples(),
+    events: Event.samples() + Event.samples(),
     navigator: nil,
     viewAllURL: nil
   )

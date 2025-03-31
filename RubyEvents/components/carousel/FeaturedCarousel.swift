@@ -8,15 +8,6 @@
 import SwiftUI
 import HotwireNative
 
-struct NoAnimationButtonStyle: ButtonStyle {
-  func makeBody(configuration: Configuration) -> some View {
-    configuration.label
-      .scaleEffect(configuration.isPressed ? 1 : 1) // No scaling
-      .animation(nil, value: configuration.isPressed) // Disable animation
-  }
-}
-
-
 struct FeaturedCarousel: View {
   var events: [Event]
   var navigator: Navigator?
@@ -31,13 +22,13 @@ struct FeaturedCarousel: View {
             event: event,
             navigator: navigator
           )
-        }.buttonStyle(NoAnimationButtonStyle())
+        }
       }
     }
     .tabViewStyle(
       PageTabViewStyle(indexDisplayMode: .always)
     )
-    .animation(.easeInOut, value: events)
+    .animation(.interactiveSpring, value: events)
     .edgesIgnoringSafeArea(.all)
   }
 }
