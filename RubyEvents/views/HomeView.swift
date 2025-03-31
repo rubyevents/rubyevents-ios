@@ -101,30 +101,43 @@ struct HomeView: View {
       ) in
         DispatchQueue.main.async {
           isLoading = false
-          
-          switch result {
-          case .success(let response):
-            featured = response.featured
-            events = response.events
-            talks = response.talks
-            speakers = response.speakers
-          case .failure(let error):
-            self.errorMessage = error.localizedDescription
-          }
+          handleFetchResult(result)
         }
       }
   }
   
   private func refreshData() async {
+    isLoading = true
+    errorMessage = nil
+    
     do {
       let response: HomeViewResponse = try await APIService.shared.fetchData(from: Router.instance.home_json_url().absoluteString)
-      featured = response.featured
-      events = response.events
-      talks = response.talks
-      speakers = response.speakers
+      DispatchQueue.main.async {
+        isLoading = false
+        handleResponse(response)
+      }
     } catch {
-      errorMessage = error.localizedDescription
+      DispatchQueue.main.async {
+        isLoading = false
+        errorMessage = error.localizedDescription
+      }
     }
+  }
+  
+  private func handleFetchResult(_ result: Result<HomeViewResponse, NetworkError>) {
+    switch result {
+    case .success(let response):
+      handleResponse(response)
+    case .failure(let error):
+      self.errorMessage = error.localizedDescription
+    }
+  }
+  
+  private func handleResponse(_ response: HomeViewResponse) {
+    featured = response.featured
+    events = response.events
+    talks = response.talks
+    speakers = response.speakers
   }
 }
 
