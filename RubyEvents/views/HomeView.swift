@@ -23,7 +23,7 @@ struct HomeView: View {
   var body: some View {
     GeometryReader { geometry in
       if isLoading {
-        ProgressView("Loading events...").frame(maxWidth: .infinity, maxHeight: .infinity)
+        HomeViewSkeleton().frame(maxWidth: .infinity, maxHeight: .infinity)
       } else if let error = errorMessage {
         VStack {
           Text("Error loading data")
