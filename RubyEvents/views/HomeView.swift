@@ -86,6 +86,8 @@ struct HomeView: View {
         fetchData()
         hasLoadedInitialData = true
       }
+    }.refreshable {
+      await refreshData()
     }
   }
   
