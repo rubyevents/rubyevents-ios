@@ -7,6 +7,7 @@
 
 import HotwireNative
 import UIKit
+import WebKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,7 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       .server(Router.instance.path_configuration_url()),
       .file(Bundle.main.url(forResource: "path-configuration", withExtension: "json")!)
     ])
-    
+
+      Hotwire.config.makeCustomWebView = { config in
+          let webView = WKWebView(frame: .zero, configuration: config)
+          webView.allowsLinkPreview = false
+          return webView
+      }
+
     return true
   }
   
