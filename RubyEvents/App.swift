@@ -11,29 +11,15 @@ import UIKit
 
 class App {
   static var instance = App()
-
+  
   var isTabbed: Bool = true
-
   var sceneDelegate: SceneDelegate?
-
-  lazy var navigator = Navigator(delegate: self)
-  lazy var tabBarController = TabBarController(app: self)
-
-  var navigators: [Navigator] {
-    if isTabbed {
-      return tabBarController.navigators
-    }
-    return [navigator]
-  }
-
-  var viewControllers: [UIViewController] {
-    navigators.map(\.rootViewController)
-  }
-
+  lazy var tabBarController = HotwireTabBarController(navigatorDelegate: self)
+  
   var window: UIWindow? {
     sceneDelegate?.window
   }
-
+  
   var isDebug: Bool {
 #if DEBUG
     return true
@@ -41,61 +27,52 @@ class App {
     return false
 #endif
   }
-
+  
   var isTestFlight: Bool {
     Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
   }
-
+  
   var environment: Environment {
     if isDebug {
       return .development
     }
-
+    
     if isTestFlight {
       return .staging
     }
-
+    
     return .production
   }
-
+  
   func start(sceneDelegate: SceneDelegate) {
     self.sceneDelegate = sceneDelegate
-    self.tabBarController.setupTabs()
-
-    switchToTabController()
+    window?.rootViewController = tabBarController
+    Appearance.configure()
+    tabBarController.load(HotwireTab.all)
   }
-
-  func switchToNavigationController() {
-    sceneDelegate?.window?.rootViewController = navigator.rootViewController
-    self.isTabbed = false
+  
+  func hideNavigationBar() {
+    tabBarController.activeNavigator.rootViewController.navigationBar.isHidden = true
   }
-
-  func switchToTabController() {
-    sceneDelegate?.window?.rootViewController = tabBarController
-    self.isTabbed = true
-  }
-
-  func navigatorFor(title: String) -> Navigator? {
-    tabBarController.navigatorFor(title: title)
+  
+  func showNavigationBar() {
+    tabBarController.activeNavigator.rootViewController.navigationBar.isHidden = false
   }
 }
 
 extension App: NavigatorDelegate {
-  func handle(proposal: VisitProposal) -> ProposalResult {
+  func handle(proposal: VisitProposal, from navigator: Navigator) -> ProposalResult {
     switch proposal.viewController {
     case "home":
       let viewController = UIHostingController(
         rootView: HomeView(
-          navigator: App.instance.navigatorFor(title: "Home")
+          navigator: tabBarController.activeNavigator
         )
       )
-
-      App.instance.tabBarController.hideNavigationBarFor(title: "Home")
-
+      hideNavigationBar()
       return .acceptCustom(viewController)
     default:
-      App.instance.tabBarController.showNavigationBarFor(title: "Home")
-
+      showNavigationBar()
       return .accept
     }
   }

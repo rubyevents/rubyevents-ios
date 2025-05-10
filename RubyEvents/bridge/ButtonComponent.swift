@@ -11,7 +11,7 @@ final class ButtonComponent: BridgeComponent {
   }
 
   private var viewController: UIViewController? {
-    delegate.destination as? UIViewController
+    delegate?.destination as? UIViewController
   }
 
   private func addButton(via message: Message, to viewController: UIViewController) {
