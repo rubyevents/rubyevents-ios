@@ -49,7 +49,7 @@ struct HomeViewSkeleton: View {
       .edgesIgnoringSafeArea(.top)
     }
     .onAppear {
-      App.instance.tabBarController.hideNavigationBarFor(title: "Home")
+      App.instance.hideNavigationBar()
       isAnimating = true
     }
   }

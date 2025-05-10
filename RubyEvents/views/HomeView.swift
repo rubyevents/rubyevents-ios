@@ -81,7 +81,7 @@ struct HomeView: View {
       }
     }
     .onAppear {
-      App.instance.tabBarController.hideNavigationBarFor(title: "Home")
+      App.instance.hideNavigationBar()
       if !hasLoadedInitialData {
         fetchData()
         hasLoadedInitialData = true

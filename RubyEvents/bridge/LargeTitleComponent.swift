@@ -18,7 +18,7 @@ final class LargeTitleComponent: BridgeComponent {
   }
 
   private var viewController: UIViewController? {
-    delegate.destination as? UIViewController
+    delegate?.destination as? UIViewController
   }
 
   private func addTitle(via message: Message, to viewController: UIViewController) {

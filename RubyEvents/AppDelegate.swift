@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let versionNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     let uniqueDeviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
 
-    Hotwire.config.applicationUserAgentPrefix = "Hotwire Native iOS; app_version: \(versionNumber); unique_device_id: \(uniqueDeviceId);"
+    Hotwire.config.applicationUserAgentPrefix = "app_version: \(versionNumber); unique_device_id: \(uniqueDeviceId);"
 
     Hotwire.registerBridgeComponents([
       ButtonComponent.self
