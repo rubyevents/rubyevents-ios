@@ -12,10 +12,14 @@ struct TalkCard: View {
   let talk: Talk
   var navigator: Navigator?
 
+  @State private var showPlayer = false
+
   var body: some View {
     Button(action: {
-      if (talk.url != nil) {
-        navigator?.route(talk.url!)
+      if talk.opensNativeScreen {
+        showPlayer = true
+      } else if let url = talk.url {
+        navigator?.route(url)
       }
     }) {
       VStack(alignment: .leading, spacing: 8) {
@@ -60,7 +64,7 @@ struct TalkCard: View {
             .fontWeight(.medium)
             .foregroundStyle(.black)
 
-          Text("\(talk.speakers[0].name) • \(talk.event_name)")
+          Text(talk.speakers.first.map { "\($0.name) • \(talk.event_name)" } ?? talk.event_name)
             .font(.caption2)
             .foregroundColor(.gray)
             .fontWeight(.regular)
@@ -70,6 +74,16 @@ struct TalkCard: View {
       }
       .frame(maxWidth: 200)
       .aspectRatio(16/9, contentMode: .fit)
+    }
+    .fullScreenCover(isPresented: $showPlayer) {
+      if let params = talk.playerParams {
+        TalkPlayerScreen(
+          params: params,
+          navigator: navigator,
+          onProgress: { _ in },
+          onDismiss: { showPlayer = false }
+        )
+      }
     }
   }
 }

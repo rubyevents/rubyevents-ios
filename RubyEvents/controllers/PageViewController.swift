@@ -15,7 +15,9 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
   
   
   func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
+    guard let firstPage = pages.first else { return }
+
     pageViewController.setViewControllers(
-      [UIHostingController(rootView: pages[0])], direction: .forward, animated: true)
+      [UIHostingController(rootView: firstPage)], direction: .forward, animated: true)
   }
 }
