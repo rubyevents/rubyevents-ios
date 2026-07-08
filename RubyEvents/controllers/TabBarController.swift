@@ -56,9 +56,8 @@ class TabBarController: UITabBarController {
   }
 
   func navigatorFor(title: String) -> Navigator? {
-    let index = configuration?.items.firstIndex { $0.self.title == title }
-
-    guard let index else { return nil }
+    guard let index = configuration?.items.firstIndex(where: { $0.title == title }),
+          navigators.indices.contains(index) else { return nil }
 
     return navigators[index]
   }

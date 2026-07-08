@@ -16,6 +16,9 @@ struct Talk: Identifiable, Decodable {
   let url: URL?
   let thumbnail_url: URL?
   let slug: String
+  let video_provider: String?
+  let video_id: String?
+  let video_url: String?
 
   enum CodingKeys: String, CodingKey {
     case id
@@ -26,6 +29,9 @@ struct Talk: Identifiable, Decodable {
     case url
     case thumbnail_url
     case slug
+    case video_provider
+    case video_id
+    case video_url
   }
 
   init(from decoder: Decoder) throws {
@@ -50,9 +56,12 @@ struct Talk: Identifiable, Decodable {
     }
 
     slug = try container.decode(String.self, forKey: .slug)
+    video_provider = try container.decodeIfPresent(String.self, forKey: .video_provider)
+    video_id = try container.decodeIfPresent(String.self, forKey: .video_id)
+    video_url = try container.decodeIfPresent(String.self, forKey: .video_url)
   }
 
-  init(id: Int64, title: String, speakers: [Speaker], duration_in_seconds: Int32?, event_name: String, url: URL?, thumbnail_url: URL?, slug: String) {
+  init(id: Int64, title: String, speakers: [Speaker], duration_in_seconds: Int32?, event_name: String, url: URL?, thumbnail_url: URL?, slug: String, video_provider: String? = nil, video_id: String? = nil, video_url: String? = nil) {
     self.id = id
     self.title = title
     self.speakers = speakers
@@ -61,6 +70,70 @@ struct Talk: Identifiable, Decodable {
     self.url = url
     self.thumbnail_url = thumbnail_url
     self.slug = slug
+    self.video_provider = video_provider
+    self.video_id = video_id
+    self.video_url = video_url
+  }
+
+  var nativelyPlayable: Bool {
+    guard video_provider == "mp4", let value = video_url?.lowercased() else { return false }
+    return value.hasPrefix("https://") && (value.hasSuffix(".mp4") || value.hasSuffix(".m4v") || value.hasSuffix(".mov"))
+  }
+
+  var isYouTube: Bool {
+    video_provider == "youtube" && !(video_id?.isEmpty ?? true)
+  }
+
+  var statusLabel: String? {
+    switch video_provider {
+    case "scheduled": return "Scheduled"
+    case "not_recorded": return "Not recorded"
+    case "not_published": return "Not published yet"
+    default: return nil
+    }
+  }
+
+  var opensNativeScreen: Bool {
+    nativelyPlayable || isYouTube || statusLabel != nil
+  }
+
+  var playerParams: PlayerParams? {
+    if nativelyPlayable, let video_url, let mediaURL = URL(string: video_url) {
+      return PlayerParams(
+        slug: slug,
+        url: mediaURL,
+        title: title,
+        subtitle: event_name,
+        poster: thumbnail_url,
+        startAt: 0
+      )
+    }
+
+    if isYouTube, let video_id {
+      return PlayerParams(
+        slug: slug,
+        url: nil,
+        title: title,
+        subtitle: event_name,
+        poster: thumbnail_url,
+        startAt: 0,
+        youtubeVideoID: video_id
+      )
+    }
+
+    if let statusLabel {
+      return PlayerParams(
+        slug: slug,
+        url: nil,
+        title: title,
+        subtitle: event_name,
+        poster: thumbnail_url,
+        startAt: 0,
+        statusLabel: statusLabel
+      )
+    }
+
+    return nil
   }
 
   func formatted_duration() -> String {
