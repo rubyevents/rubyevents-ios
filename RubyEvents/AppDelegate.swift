@@ -19,11 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Hotwire.config.applicationUserAgentPrefix = "Hotwire Native iOS; app_version: \(versionNumber); unique_device_id: \(uniqueDeviceId);"
 
     Hotwire.registerBridgeComponents([
-      ButtonComponent.self
+      ButtonComponent.self,
+      LiveActivityComponent.self
     ])
 
     Hotwire.config.showDoneButtonOnModals = true
     Hotwire.config.debugLoggingEnabled = true
+
+    NextEventUpdater.registerBackgroundTask()
 
     Hotwire.loadPathConfiguration(from: [
       .server(Router.instance.path_configuration_url()),

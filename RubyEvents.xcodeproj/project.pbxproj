@@ -10,19 +10,73 @@
 		973DD3652D95F8BE008E0AED /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 973DD3642D95F8BE008E0AED /* CachedAsyncImage */; };
 		97613B4C2D0635C600220031 /* HotwireNative in Frameworks */ = {isa = PBXBuildFile; productRef = 97613B4B2D0635C600220031 /* HotwireNative */; };
 		97613B572D06512900220031 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 97613B562D06512900220031 /* YouTubePlayerKit */; };
+		97AAF32F2FFF2733009DB8C2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AAF32E2FFF2733009DB8C2 /* WidgetKit.framework */; };
+		97AAF3312FFF2733009DB8C2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AAF3302FFF2733009DB8C2 /* SwiftUI.framework */; };
+		97AAF3422FFF2734009DB8C2 /* RubyEventsWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 97AAF32C2FFF2733009DB8C2 /* RubyEventsWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		97AAF3402FFF2734009DB8C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97613B0E2D0634F500220031 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97AAF32B2FFF2733009DB8C2;
+			remoteInfo = RubyEventsWidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		97AAF3432FFF2734009DB8C2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				97AAF3422FFF2734009DB8C2 /* RubyEventsWidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		97613B162D0634F500220031 /* RubyEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RubyEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97AAF32C2FFF2733009DB8C2 /* RubyEventsWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RubyEventsWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		97AAF32E2FFF2733009DB8C2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		97AAF3302FFF2733009DB8C2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		97AAF3552FFF37FE009DB8C2 /* RubyEventsWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RubyEventsWidgetsExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		975673453001ECF200F713BE /* Exceptions for "RubyEventsWidgets" folder in "RubyEvents" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NextEventWidget.swift,
+			);
+			target = 97613B152D0634F500220031 /* RubyEvents */;
+		};
 		97613B3E2D0634FA00220031 /* Exceptions for "RubyEvents" folder in "RubyEvents" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
 			target = 97613B152D0634F500220031 /* RubyEvents */;
+		};
+		97AAF3472FFF2734009DB8C2 /* Exceptions for "RubyEventsWidgets" folder in "RubyEventsWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 97AAF32B2FFF2733009DB8C2 /* RubyEventsWidgetsExtension */;
+		};
+		97AAF3502FFF2D25009DB8C2 /* Exceptions for "RubyEvents" folder in "RubyEventsWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				liveactivity/LiveActivityShared.swift,
+				liveactivity/NextEventStore.swift,
+				liveactivity/ScheduleActivityAttributes.swift,
+			);
+			target = 97AAF32B2FFF2733009DB8C2 /* RubyEventsWidgetsExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -31,8 +85,18 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				97613B3E2D0634FA00220031 /* Exceptions for "RubyEvents" folder in "RubyEvents" target */,
+				97AAF3502FFF2D25009DB8C2 /* Exceptions for "RubyEvents" folder in "RubyEventsWidgetsExtension" target */,
 			);
 			path = RubyEvents;
+			sourceTree = "<group>";
+		};
+		97AAF3322FFF2733009DB8C2 /* RubyEventsWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				975673453001ECF200F713BE /* Exceptions for "RubyEventsWidgets" folder in "RubyEvents" target */,
+				97AAF3472FFF2734009DB8C2 /* Exceptions for "RubyEventsWidgets" folder in "RubyEventsWidgetsExtension" target */,
+			);
+			path = RubyEventsWidgets;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -48,13 +112,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		97AAF3292FFF2733009DB8C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97AAF3312FFF2733009DB8C2 /* SwiftUI.framework in Frameworks */,
+				97AAF32F2FFF2733009DB8C2 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		97613B0D2D0634F500220031 = {
 			isa = PBXGroup;
 			children = (
+				97AAF3552FFF37FE009DB8C2 /* RubyEventsWidgetsExtension.entitlements */,
 				97613B182D0634F500220031 /* RubyEvents */,
+				97AAF3322FFF2733009DB8C2 /* RubyEventsWidgets */,
+				97AAF32D2FFF2733009DB8C2 /* Frameworks */,
 				97613B172D0634F500220031 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,8 +139,18 @@
 			isa = PBXGroup;
 			children = (
 				97613B162D0634F500220031 /* RubyEvents.app */,
+				97AAF32C2FFF2733009DB8C2 /* RubyEventsWidgetsExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		97AAF32D2FFF2733009DB8C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97AAF32E2FFF2733009DB8C2 /* WidgetKit.framework */,
+				97AAF3302FFF2733009DB8C2 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,10 +163,12 @@
 				97613B122D0634F500220031 /* Sources */,
 				97613B132D0634F500220031 /* Frameworks */,
 				97613B142D0634F500220031 /* Resources */,
+				97AAF3432FFF2734009DB8C2 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				97AAF3412FFF2734009DB8C2 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				97613B182D0634F500220031 /* RubyEvents */,
@@ -95,6 +183,28 @@
 			productReference = 97613B162D0634F500220031 /* RubyEvents.app */;
 			productType = "com.apple.product-type.application";
 		};
+		97AAF32B2FFF2733009DB8C2 /* RubyEventsWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97AAF3462FFF2734009DB8C2 /* Build configuration list for PBXNativeTarget "RubyEventsWidgetsExtension" */;
+			buildPhases = (
+				97AAF3282FFF2733009DB8C2 /* Sources */,
+				97AAF3292FFF2733009DB8C2 /* Frameworks */,
+				97AAF32A2FFF2733009DB8C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				97AAF3322FFF2733009DB8C2 /* RubyEventsWidgets */,
+			);
+			name = RubyEventsWidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = RubyEventsWidgetsExtension;
+			productReference = 97AAF32C2FFF2733009DB8C2 /* RubyEventsWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -102,11 +212,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					97613B152D0634F500220031 = {
 						CreatedOnToolsVersion = 16.1;
+					};
+					97AAF32B2FFF2733009DB8C2 = {
+						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
@@ -130,12 +243,20 @@
 			projectRoot = "";
 			targets = (
 				97613B152D0634F500220031 /* RubyEvents */,
+				97AAF32B2FFF2733009DB8C2 /* RubyEventsWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		97613B142D0634F500220031 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97AAF32A2FFF2733009DB8C2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -152,7 +273,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		97AAF3282FFF2733009DB8C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		97AAF3412FFF2734009DB8C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97AAF32B2FFF2733009DB8C2 /* RubyEventsWidgetsExtension */;
+			targetProxy = 97AAF3402FFF2734009DB8C2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		97613B402D0634FA00220031 /* Debug */ = {
@@ -161,6 +297,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = RubyEvents/RubyEvents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5UY2R75SM3;
@@ -168,12 +305,14 @@
 				INFOPLIST_FILE = RubyEvents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RubyEvents;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -193,6 +332,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = RubyEvents/RubyEvents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5UY2R75SM3;
@@ -200,12 +340,14 @@
 				INFOPLIST_FILE = RubyEvents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RubyEvents;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,6 +480,70 @@
 			};
 			name = Release;
 		};
+		97AAF3442FFF2734009DB8C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = RubyEventsWidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5UY2R75SM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RubyEventsWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RubyEventsWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.rubyevents.RubyEvents.RubyEventsWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97AAF3452FFF2734009DB8C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = RubyEventsWidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5UY2R75SM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RubyEventsWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RubyEventsWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.rubyevents.RubyEvents.RubyEventsWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -355,6 +561,15 @@
 			buildConfigurations = (
 				97613B402D0634FA00220031 /* Debug */,
 				97613B412D0634FA00220031 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97AAF3462FFF2734009DB8C2 /* Build configuration list for PBXNativeTarget "RubyEventsWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97AAF3442FFF2734009DB8C2 /* Debug */,
+				97AAF3452FFF2734009DB8C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
