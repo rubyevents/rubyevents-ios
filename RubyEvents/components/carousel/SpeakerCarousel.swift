@@ -13,7 +13,7 @@ struct SpeakerCarousel: View {
   let speakers: [Speaker]
   let navigator: Navigator?
   let viewAllURL: URL?
-  
+
   func navigateToProfile(speaker: Speaker) {
     let proposal = VisitProposal(
       url: speaker.profile_url,
@@ -24,7 +24,6 @@ struct SpeakerCarousel: View {
     navigator?.route(proposal)
   }
 
-
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       HStack {
@@ -33,7 +32,7 @@ struct SpeakerCarousel: View {
           .bold()
 
         Spacer()
-    
+
         Button(action: { if viewAllURL != nil { navigator?.route(viewAllURL!) } }) {
           Text("View All")
             .font(.subheadline)
@@ -51,7 +50,7 @@ struct SpeakerCarousel: View {
                     speaker: speaker
                   ).frame(width: 100, height: 100)
                     .padding(5)
-                  
+
                   Text(speaker.name)
                     .font(.subheadline)
                     .foregroundStyle(.black)

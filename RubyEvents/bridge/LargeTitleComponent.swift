@@ -26,7 +26,7 @@ final class LargeTitleComponent: BridgeComponent {
 
     viewController.navigationItem.title = data.title
     viewController.navigationController?.navigationBar.prefersLargeTitles = true
-    
+
     self.reply(to: "connect")
   }
 }
@@ -36,4 +36,3 @@ private extension LargeTitleComponent {
     let title: String
   }
 }
-

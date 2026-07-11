@@ -62,25 +62,25 @@ class TabBarController: UITabBarController {
 
     return navigators[index]
   }
-  
+
   var currentNavigator: Navigator? {
     navigatorFor(title: currentTabTitle ?? "")
   }
-  
+
   var currentTabTitle: String? {
     self.tabBar.selectedItem?.title
   }
-  
+
   func hideNavigationBarFor(title: String) {
     let navigator = self.navigatorFor(title: title)
     navigator?.rootViewController.navigationBar.isHidden = true
   }
-  
+
   func showNavigationBarFor(title: String) {
     let navigator = self.navigatorFor(title: title)
     navigator?.rootViewController.navigationBar.isHidden = false
   }
-  
+
   func hideTabBar() {
     self.tabBar.isHidden = true
   }
@@ -167,7 +167,7 @@ class TabBarController: UITabBarController {
     UITabBar.appearance().isTranslucent = false
     UITabBar.appearance().tintColor = .red
     UITabBar.appearance().unselectedItemTintColor = .black
-      
+
     self.isSetup = true
   }
 
@@ -181,16 +181,5 @@ class TabBarController: UITabBarController {
 
   required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-//    self.tabBar.backgroundColor = .white
-//    self.tabBar.barStyle = .default
-//    self.tabBar.isTranslucent = false
-//    self.tabBar.isOpaque = false
-//    self.tabBar.barTintColor = .white
-//    self.tabBar.tintColor = .gray
   }
 }

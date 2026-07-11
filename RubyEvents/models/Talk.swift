@@ -215,7 +215,7 @@ struct Talk: Identifiable, Decodable {
         url: Router.instance.root_url().appending(path: "/talks/game-show-and-closing-remarks"),
         thumbnail_url: URL(string: "https://i.ytimg.com/vi/YK-fnF-CNxc/sddefault.jpg"),
         slug: "game-show-and-closing-remarks"
-      ),
+      )
     ]
   }
 }

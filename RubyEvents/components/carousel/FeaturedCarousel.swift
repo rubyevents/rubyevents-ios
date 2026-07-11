@@ -11,7 +11,7 @@ import HotwireNative
 struct FeaturedCarousel: View {
   var events: [Event]
   var navigator: Navigator?
-  
+
   var body: some View {
     TabView {
       ForEach(events) { event in

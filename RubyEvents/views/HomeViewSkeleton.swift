@@ -9,17 +9,17 @@ import SwiftUI
 
 struct HomeViewSkeleton: View {
   @State private var isAnimating = false
-  
+
   var body: some View {
     GeometryReader { geometry in
-      ScrollView() {
+      ScrollView {
         RoundedRectangle(cornerRadius: 0)
           .fill(Color.gray.opacity(0.2))
           .frame(maxWidth: .infinity)
           .frame(height: (geometry.size.height / 5) * 3.5)
           .opacity(isAnimating ? 1 : 0.2)
           .animation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: isAnimating)
-        
+
         VStack(spacing: 24) {
           ForEach(0..<2, id: \.self) { index in
             VStack(alignment: .leading, spacing: 12) {
@@ -29,7 +29,7 @@ struct HomeViewSkeleton: View {
                 .padding(.horizontal)
                 .opacity(isAnimating ? 0.5 : 0.5)
                 .animation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true).delay(0.1 * Double(index)), value: isAnimating)
-              
+
               HStack(spacing: 16) {
                 ForEach(0..<4, id: \.self) { itemIndex in
                   RoundedRectangle(cornerRadius: 8)
@@ -40,7 +40,7 @@ struct HomeViewSkeleton: View {
                 }
               }
               .padding(.horizontal)
-              
+
             }
           }
         }

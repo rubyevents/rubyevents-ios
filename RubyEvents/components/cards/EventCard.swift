@@ -11,16 +11,16 @@ import HotwireNative
 struct EventCard: View {
   let event: Event
   var navigator: Navigator?
-  
+
   var body: some View {
     Button(action: {
-      if (event.url != nil) {
+      if event.url != nil {
         navigator?.route(event.url)
       }
     }) {
       VStack(alignment: .leading, spacing: 8) {
         ZStack(alignment: .bottomTrailing) {
-          if (event.card_image_url != nil) {
+          if event.card_image_url != nil {
             AsyncImage(url: URL(string: event.card_image_url!)) { image in
               image
                 .resizable()
@@ -31,7 +31,7 @@ struct EventCard: View {
                 .frame(maxWidth: .infinity, maxHeight: 160)
                 .foregroundColor(Color(hex: "#EFEFEF"))
             }
-            
+
             .frame(width: 200, height: 120)
             .border(.gray, width: 1)
             .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -42,7 +42,7 @@ struct EventCard: View {
           } else {
             Text("No Image")
           }
-          
+
           Text(event.location)
             .font(.caption2)
             .bold()
@@ -53,7 +53,7 @@ struct EventCard: View {
             .cornerRadius(4)
             .padding(8)
         }
-        
+
         VStack(alignment: .leading, spacing: 4) {
           Text(event.name)
             .font(.caption)
@@ -61,7 +61,7 @@ struct EventCard: View {
             .truncationMode(.tail)
             .fontWeight(.medium)
             .foregroundStyle(.black)
-          
+
           Text(event.dateString())
             .font(.caption2)
             .foregroundColor(.gray)

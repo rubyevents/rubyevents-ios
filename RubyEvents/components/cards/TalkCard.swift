@@ -14,7 +14,7 @@ struct TalkCard: View {
 
   var body: some View {
     Button(action: {
-      if (talk.url != nil) {
+      if talk.url != nil {
         navigator?.route(talk.url!)
       }
     }) {
@@ -39,7 +39,7 @@ struct TalkCard: View {
               .stroke(Color(hex: "#EFEFEF"), lineWidth: 1)
           )
 
-          if (talk.duration_in_seconds != nil) {
+          if talk.duration_in_seconds != nil {
             Text(talk.formatted_duration())
               .font(.caption2)
               .bold()

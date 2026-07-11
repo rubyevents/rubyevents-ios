@@ -4,16 +4,16 @@ import HotwireNative
 struct FeaturedCard: View {
   var event: Event
   var navigator: Navigator?
-  
+
   var body: some View {
     GeometryReader { geometry in
       VStack(spacing: 0) {
-        VStack() {
+        VStack {
           Spacer().frame(height: geometry.size.height / 6)
-          
+
           if event.featured_image_url != nil {
             AsyncImage(url: URL(string: event.featured_image_url!)) { image in
-              image.resizable().background() {
+              image.resizable().background {
                 Color(hex: event.featured_background)
               }.aspectRatio(16 / 9, contentMode: .fit)
             } placeholder: {
@@ -22,7 +22,7 @@ struct FeaturedCard: View {
           } else {
             Text("No Image")
           }
-          
+
           TextOverlay(event: event, navigator: navigator)
         }
         .background(Color(hex: event.featured_background))
@@ -35,7 +35,7 @@ struct FeaturedCard: View {
 struct TextOverlay: View {
   var event: Event
   let navigator: Navigator?
-  
+
   var background: LinearGradient {
     .linearGradient(
       Gradient(colors: [
@@ -46,23 +46,23 @@ struct TextOverlay: View {
       endPoint: .bottom
     )
   }
-  
+
   var body: some View {
     ZStack {
       background
-      
+
       VStack(spacing: 12) {
         Text(event.name)
           .font(.title2)
           .bold()
           .foregroundColor(Color(hex: event.featured_color))
-        
+
         Text("\(event.location) • \(event.dateString())")
           .font(.caption)
           .foregroundColor(Color(hex: event.featured_color))
           .opacity(0.6)
           .bold(true)
-        
+
         Button(action: {
           navigator?.route(event.url)
         }) {

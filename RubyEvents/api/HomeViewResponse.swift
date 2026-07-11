@@ -5,7 +5,7 @@
 //  Created by Marco Roth on 28.03.2025.
 //
 
-struct HomeList<T : Decodable>: Decodable {
+struct HomeList<T: Decodable>: Decodable {
   let name: String
   let items: [T]
   let url: String

@@ -13,13 +13,13 @@ struct HomeView: View {
   @State private var talks: [HomeList<Talk>] = []
   @State private var events: [HomeList<Event>] = []
   @State private var speakers: [HomeList<Speaker>] = []
-  
+
   @State private var isLoading: Bool = true
-  @State private var errorMessage: String? = nil
+  @State private var errorMessage: String?
   @State private var hasLoadedInitialData: Bool = false
-  
+
   var navigator: Navigator?
-  
+
   var body: some View {
     GeometryReader { geometry in
       if isLoading {
@@ -45,7 +45,7 @@ struct HomeView: View {
           FeaturedCarousel(events: featured, navigator: navigator)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .frame(height: (geometry.size.height / 5) * 3.5)
-          
+
           VStack(spacing: 24) {
             ForEach(talks, id: \.name) { list in
               TalkCarousel(
@@ -55,7 +55,7 @@ struct HomeView: View {
                 viewAllURL: URL(string: list.url)
               )
             }
-            
+
             ForEach(events, id: \.name) { list in
               EventCarousel(
                 title: list.name,
@@ -64,7 +64,7 @@ struct HomeView: View {
                 viewAllURL: URL(string: list.url)
               )
             }
-            
+
             ForEach(speakers, id: \.name) { list in
               SpeakerCarousel(
                 title: list.name,
@@ -73,7 +73,7 @@ struct HomeView: View {
                 viewAllURL: URL(string: list.url)
               )
             }
-            
+
           }
           .padding(.top, 24)
         }
@@ -90,11 +90,11 @@ struct HomeView: View {
       await refreshData()
     }
   }
-  
+
   private func fetchData() {
     isLoading = true
     errorMessage = nil
-    
+
     APIService.shared
       .fetchData(from: Router.instance.home_json_url().absoluteString) { (
         result: Result<HomeViewResponse, NetworkError>
@@ -105,11 +105,11 @@ struct HomeView: View {
         }
       }
   }
-  
+
   private func refreshData() async {
     isLoading = true
     errorMessage = nil
-    
+
     do {
       let response: HomeViewResponse = try await APIService.shared.fetchData(from: Router.instance.home_json_url().absoluteString)
       DispatchQueue.main.async {
@@ -123,7 +123,7 @@ struct HomeView: View {
       }
     }
   }
-  
+
   private func handleFetchResult(_ result: Result<HomeViewResponse, NetworkError>) {
     switch result {
     case .success(let response):
@@ -132,7 +132,7 @@ struct HomeView: View {
       self.errorMessage = error.localizedDescription
     }
   }
-  
+
   private func handleResponse(_ response: HomeViewResponse) {
     featured = response.featured
     events = response.events
