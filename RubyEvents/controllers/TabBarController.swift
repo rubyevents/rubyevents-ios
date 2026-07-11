@@ -6,6 +6,7 @@
 //
 
 import HotwireNative
+import SwiftUI
 import UIKit
 
 struct TabBarConfigurationItem {
@@ -24,6 +25,7 @@ class TabBarController: UITabBarController {
   var configuration: TabBarConfiguration?
   var navigators: [Navigator] = []
   var isSetup: Bool = false
+  private var searchPlaceholder: UIViewController?
 
   init(app: App) {
     self.app = app
@@ -110,12 +112,6 @@ class TabBarController: UITabBarController {
             icon: "music.mic",
             url: Router.instance.talks_url(),
             position: 2
-          ),
-          TabBarConfigurationItem(
-            title: "Speakers",
-            icon: "person.fill",
-            url: Router.instance.speakers_url(),
-            position: 3
           )
         ]
       )
@@ -138,17 +134,26 @@ class TabBarController: UITabBarController {
       tabBarItems.append(fixedTabBarItemFrom(item: item))
     }
 
-    viewControllers = navigators.map(\.rootViewController)
+    var controllers: [UIViewController] = navigators.map(\.rootViewController)
 
     tabBarItems.enumerated().forEach { index, item in
-      if let viewController = self.viewControllers?[index] {
-//        viewController.tabBarController?.tabBar.tintColor = .white
-//        viewController.tabBarController?.tabBar.barTintColor = .black
-        viewController.tabBarItem = item
+      if index < controllers.count {
+        controllers[index].tabBarItem = item
       }
     }
 
-    // NavBar styling
+    let searchController = UIViewController()
+    searchController.tabBarItem = UITabBarItem(
+      title: "Search",
+      image: UIImage(systemName: "magnifyingglass"),
+      tag: controllers.count
+    )
+    self.searchPlaceholder = searchController
+    controllers.append(searchController)
+
+    viewControllers = controllers
+    self.delegate = self
+
     let navigationBarAppearance = UINavigationBarAppearance()
     navigationBarAppearance.configureWithDefaultBackground()
     UINavigationBar.appearance().standardAppearance = navigationBarAppearance
@@ -157,7 +162,6 @@ class TabBarController: UITabBarController {
     UINavigationBar.appearance().isTranslucent = true
     navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
 
-    // TabBar styling
     let tabBarAppearance = UITabBarAppearance()
     tabBarAppearance.configureWithDefaultBackground()
     tabBarAppearance.backgroundColor = UIColor.white
@@ -181,5 +185,34 @@ class TabBarController: UITabBarController {
 
   required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+
+  private func presentSearch() {
+    let searchView = SearchView(
+      navigator: currentNavigator,
+      onDismiss: { [weak self] in self?.dismiss(animated: true) }
+    )
+
+    let hosting = UIHostingController(rootView: searchView)
+    hosting.modalPresentationStyle = .pageSheet
+    if let sheet = hosting.sheetPresentationController {
+      sheet.detents = [.large()]
+      sheet.prefersGrabberVisible = true
+    }
+    present(hosting, animated: true)
+  }
+}
+
+extension TabBarController: UITabBarControllerDelegate {
+  func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    if viewController === searchPlaceholder {
+      presentSearch()
+      return false
+    }
+    return true
   }
 }
