@@ -48,6 +48,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		975673453001ECF200F713BE /* Exceptions for "RubyEventsWidgets" folder in "RubyEvents" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NextEventWidget.swift,
+			);
+			target = 97613B152D0634F500220031 /* RubyEvents */;
+		};
 		97613B3E2D0634FA00220031 /* Exceptions for "RubyEvents" folder in "RubyEvents" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -66,6 +73,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				liveactivity/LiveActivityShared.swift,
+				liveactivity/NextEventStore.swift,
 				liveactivity/ScheduleActivityAttributes.swift,
 			);
 			target = 97AAF32B2FFF2733009DB8C2 /* RubyEventsWidgetsExtension */;
@@ -85,6 +93,7 @@
 		97AAF3322FFF2733009DB8C2 /* RubyEventsWidgets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				975673453001ECF200F713BE /* Exceptions for "RubyEventsWidgets" folder in "RubyEvents" target */,
 				97AAF3472FFF2734009DB8C2 /* Exceptions for "RubyEventsWidgets" folder in "RubyEventsWidgetsExtension" target */,
 			);
 			path = RubyEventsWidgets;
@@ -303,7 +312,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,7 +347,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,7 +493,7 @@
 				INFOPLIST_FILE = RubyEventsWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RubyEventsWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,7 +525,7 @@
 				INFOPLIST_FILE = RubyEventsWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RubyEventsWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

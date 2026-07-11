@@ -39,6 +39,11 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
+		<string>fetch</string>
+	</array>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>org.rubyevents.RubyEvents.nextevent.refresh</string>
 	</array>
 </dict>
 </plist>

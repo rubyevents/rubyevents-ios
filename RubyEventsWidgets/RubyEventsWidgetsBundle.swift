@@ -10,9 +10,8 @@ import SwiftUI
 
 @main
 struct RubyEventsWidgetsBundle: WidgetBundle {
-    var body: some Widget {
-        RubyEventsWidgets()
-        RubyEventsWidgetsControl()
-        RubyEventsWidgetsLiveActivity()
-    }
+  var body: some Widget {
+    NextEventWidget()
+    RubyEventsWidgetsLiveActivity()
+  }
 }

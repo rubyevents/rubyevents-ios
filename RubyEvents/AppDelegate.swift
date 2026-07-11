@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Hotwire.config.showDoneButtonOnModals = true
     Hotwire.config.debugLoggingEnabled = true
 
+    NextEventUpdater.registerBackgroundTask()
+
     Hotwire.loadPathConfiguration(from: [
       .server(Router.instance.path_configuration_url()),
       .file(Bundle.main.url(forResource: "path-configuration", withExtension: "json")!)

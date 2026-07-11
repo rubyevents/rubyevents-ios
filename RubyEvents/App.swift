@@ -63,6 +63,15 @@ class App {
     self.tabBarController.setupTabs()
 
     switchToTabController()
+
+    NextEventUpdater.refresh()
+    NextEventUpdater.scheduleBackgroundRefresh()
+
+    NotificationCenter.default.addObserver(
+      forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main
+    ) { _ in
+      NextEventUpdater.refresh()
+    }
   }
 
   func switchToNavigationController() {
