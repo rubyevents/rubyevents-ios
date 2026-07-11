@@ -78,6 +78,29 @@ class App {
   func navigatorFor(title: String) -> Navigator? {
     tabBarController.navigatorFor(title: title)
   }
+
+  func route(_ url: URL) {
+    let target = webURL(from: url)
+
+    guard isTabbed else {
+      navigator.route(target)
+      return
+    }
+
+    if let index = tabBarController.configuration?.items.firstIndex(where: { $0.title == "Events" }) {
+      tabBarController.selectedIndex = index
+    }
+
+    (navigatorFor(title: "Events") ?? tabBarController.currentNavigator)?.route(target)
+  }
+
+  private func webURL(from url: URL) -> URL {
+    guard url.scheme == "rubyevents" else { return url }
+
+    let path = "/\(url.host ?? "")\(url.path)"
+
+    return Router.instance.root_url().appendingPathComponent(path)
+  }
 }
 
 extension App: NavigatorDelegate {
